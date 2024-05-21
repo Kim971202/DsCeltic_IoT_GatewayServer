@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.17'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.daesungiot'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Connection
+	implementation 'org.springframework:spring-webflux:5.3.21'
+
+	implementation 'io.netty:netty-all:4.1.29.Final'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// annotations
+	implementation 'org.jetbrains:annotations:22.0.0'
+
+	// Json
+	implementation 'com.google.code.gson:gson:2.9.0'
+	implementation 'com.googlecode.json-simple:json-simple:1.1'
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation group: 'org.json', name: 'json', version: '20231013'
+
+	// httpclient
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13' // Apache HttpClient
+
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

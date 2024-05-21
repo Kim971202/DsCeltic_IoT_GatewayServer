@@ -1,0 +1,62 @@
+server:
+  port: 10010
+  gatewayPort: 10030
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    com.netty.sample.nettysocket: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+
+
+my-settings:
+  cmdHandlers:
+    102: cmd0102
+    104: cmd0104
+    106: cmd0106
+    108: cmd0106
+    212: cmd0212
+    222: cmd0106
+    224: cmd0106
+    201: mgmtcmd
+    203: mgmtcmd
+    205: mgmtcmd
+    207: mgmtcmd
+    209: mgmtcmd
+    211: mgmtcmd
+    213: mgmtcmd
+    215: mgmtcmd
+    217: mgmtcmd
+    219: mgmtcmd
+    221: mgmtcmd
+    227: mgmtcmd
+    229: mgmtcmd
+    231: mgmtcmd
+    233: mgmtcmd
+    235: mgmtcmd
+    110: cmd0110
+    301: mgmtcmd
+    303: mgmtcmd
+    305: mgmtcmd
+    307: mgmtcmd
+    308: cmd0106
+    311: mgmtcmd
+    313: mgmtcmd
+
+mobius-request:
+  inCSEAddress: localhost:7579
+  appServerAddress: http://localhost:8080/GatewayToAppServer
+  pointOfAccess: HTTP|localhost:7579/onem2m-gateway/rcctl
+  passCode: dsceltic1947@
+  from: 0.2.481.1.1.DS_GATE_01.1
+
+
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
