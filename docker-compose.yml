@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  gatewayserver:
+    build: .
+    container_name: gatewayserver
+    ports:
+      - "10010:10010"
