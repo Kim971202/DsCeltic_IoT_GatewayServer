@@ -44,9 +44,9 @@ my-settings:
     313: mgmtcmd
 
 mobius-request:
-  inCSEAddress: localhost:7579
-  appServerAddress: http://localhost:8080/GatewayToAppServer
-  pointOfAccess: HTTP|localhost:7579/onem2m-gateway/rcctl
+  inCSEAddress: 172.31.25.138:7579
+  appServerAddress: http://172.31.25.138:8080/GatewayToAppServer
+  pointOfAccess: HTTP|172.31.25.138:7579/onem2m-gateway/rcctl
   passCode: dsceltic1947@
   from: 0.2.481.1.1.DS_GATE_01.1
 
