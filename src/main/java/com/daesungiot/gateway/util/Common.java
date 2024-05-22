@@ -207,42 +207,24 @@ public class Common {
             return json.toString();
         }
 
-    public String hexaToText (String deviceId) throws Exception {
 
-        // "." 이후의 문자열을 추출
-        int startIndex = deviceId.lastIndexOf('.') + 1; // 마지막 점 이후부터 시작
-        if (startIndex < 0 || startIndex + 32 > deviceId.length()) {
-            throw new Exception("Input string is too short to extract the required substring.");
+        public String hexaToText (String deviceId) throws Exception {
+
+//            String HexString = deviceId.substring(33, 57);
+
+                String HexString = deviceId.substring(41, 65);
+
+                String OutputString = new String();
+                char[] Temp_Char = HexString.toCharArray();
+                for (int x = 0; x < Temp_Char.length; x = x + 2) {
+                    String Temp_String = "" + Temp_Char[x] + "" + Temp_Char[x + 1];
+                    char character = (char) Integer.parseInt(Temp_String, 16);
+                    OutputString = OutputString + character;
+                }
+
+                return OutputString;
+
         }
-
-        String hex = deviceId.substring(startIndex, startIndex + 32);
-
-        // Hex string을 텍스트로 변환
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < hex.length(); i += 2) {
-            String str = hex.substring(i, i + 2);
-            stringBuilder.append((char) Integer.parseInt(str, 16));
-        }
-        return stringBuilder.toString().replaceAll(" ", "");
-    }
-
-//        public String hexaToText (String deviceId) throws Exception {
-//
-////            String HexString = deviceId.substring(33, 57);
-//
-//                String HexString = deviceId.substring(41, 65);
-//
-//                String OutputString = new String();
-//                char[] Temp_Char = HexString.toCharArray();
-//                for (int x = 0; x < Temp_Char.length; x = x + 2) {
-//                    String Temp_String = "" + Temp_Char[x] + "" + Temp_Char[x + 1];
-//                    char character = (char) Integer.parseInt(Temp_String, 16);
-//                    OutputString = OutputString + character;
-//                }
-//
-//                return OutputString;
-//
-//        }
 
     public String hexaToText2 (String srNo) throws Exception {
 
