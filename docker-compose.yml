@@ -5,3 +5,4 @@ services:
     container_name: gatewayserver
     ports:
       - "10010:10010"
+      - "10030:10030"
