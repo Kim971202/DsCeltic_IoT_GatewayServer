@@ -139,17 +139,17 @@ public class RemoteController {
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"12h\": {\"hr\":\"" + workPeriod + "\"," + "\"mn\":\"" + workTime + "\"}}}";
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
-//                    StringBuilder sb = new StringBuilder("");
-//                    sb.append("\"{\\\"ri\\\":\\\"\"");
-//                    sb.append(resourceId);
-//                    sb.append("\",");
-//                    sb.append("\"rsCf\": {\"7wk\":");
-//                    sb.append(weekList);
-//                    sb.append("}}");
+                    StringBuilder sb = new StringBuilder("");
+                    sb.append("\"{\\\"ri\\\":\\\"\"");
+                    sb.append(resourceId);
+                    sb.append("\",");
+                    sb.append("\"rsCf\": {\"7wk\":");
+                    sb.append(weekList);
+                    sb.append("}}");
 //                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("{\"rsCf\":  \"%s\"}", weekList) + "}}";
-                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("\"rsCf\": {\"7wk\":\"%s\"}}",weekList);
-//                    cmdBody = String.valueOf(sb);
-                    System.out.println("cmdBody: " + cmdBody);
+//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("\"rsCf\": {\"7wk\":\"%s\"}}",weekList);
+                    cmdBody = String.valueOf(sb);
+                    System.out.println("cmdBodyscscscsc: " + cmdBody);
                     // 7wh 주간 예약
                 } else if (cmdCode == (short) 0x220) {
                     String awakeList = common.readCon(msgBody, "awakeList");
