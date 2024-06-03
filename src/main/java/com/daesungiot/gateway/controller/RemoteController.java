@@ -7,6 +7,7 @@ import com.daesungiot.gateway.daesung.RemoteMessage;
 import com.daesungiot.gateway.util.Common;
 import com.daesungiot.gateway.util.JSON;
 import com.google.gson.Gson;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -139,11 +140,9 @@ public class RemoteController {
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
                     System.out.println("weekList: " + weekList);
-                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + JSON.fromJson(weekList, JSON.class) + "}}";
+                    JSONObject jsonObject = new JSONObject(weekList);
+                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + jsonObject + "}}";
 //                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\":" + weekList + "}";
-                    System.out.println("cmdBody: " + cmdBody);
-                    cmdBody.replaceAll("\"", "");
-                    System.out.println("cmdBody: " + cmdBody);
                     // 7wh 주간 예약
                 } else if (cmdCode == (short) 0x220) {
                     String awakeList = common.readCon(msgBody, "awakeList");
