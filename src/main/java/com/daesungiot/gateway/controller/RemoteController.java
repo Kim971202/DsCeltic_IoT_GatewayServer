@@ -139,16 +139,16 @@ public class RemoteController {
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"12h\": {\"hr\":\"" + workPeriod + "\"," + "\"mn\":\"" + workTime + "\"}}}";
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
-                    StringBuilder sb = new StringBuilder("");
-                    sb.append("\"{\\\"ri\\\":\\\"\"");
-                    sb.append(resourceId);
-                    sb.append("\",");
-                    sb.append("\"rsCf\": {\"7wk\":");
-                    sb.append(weekList);
-                    sb.append("}}");
-//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("{\"rsCf\":  \"%s\"}", weekList) + "}}";
-//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("\"rsCf\": {\"7wk\":\"%s\"}}",weekList);
-                    cmdBody = String.valueOf(sb);
+
+                    JSONObject rsCfObj = new JSONObject();
+                    rsCfObj.put("7wk", weekList);
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("ri", resourceId);
+                    jsonObject.put("rsCf", rsCfObj);
+
+                    cmdBody = jsonObject.toString();
+//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
                     System.out.println("cmdBodyscscscsc: " + cmdBody);
                     // 7wh 주간 예약
                 } else if (cmdCode == (short) 0x220) {
