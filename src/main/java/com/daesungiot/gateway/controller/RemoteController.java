@@ -137,6 +137,7 @@ public class RemoteController {
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"12h\": {\"hr\":\"" + workPeriod + "\"," + "\"mn\":\"" + workTime + "\"}}}";
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
+                    System.out.println("weekList: " + weekList);
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
                     // 7wh 주간 예약
                 } else if (cmdCode == (short) 0x220) {
