@@ -140,6 +140,8 @@ public class RemoteController {
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
 
+//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
+
                     JSONObject rsCfObj = new JSONObject();
                     rsCfObj.put("7wk", weekList);
 
@@ -147,8 +149,7 @@ public class RemoteController {
                     jsonObject.put("ri", resourceId);
                     jsonObject.put("rsCf", rsCfObj);
 
-                    cmdBody = JSON.toJson(jsonObject);
-//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
+                    cmdBody = String.valueOf(jsonObject);
                     System.out.println("cmdBodyscscscsc: " + cmdBody);
                     // 7wh 주간 예약
                 } else if (cmdCode == (short) 0x220) {
