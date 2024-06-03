@@ -147,7 +147,7 @@ public class RemoteController {
                     jsonObject.put("ri", resourceId);
                     jsonObject.put("rsCf", rsCfObj);
 
-                    cmdBody = jsonObject.toString();
+                    cmdBody = JSON.toJson(jsonObject);
 //                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
                     System.out.println("cmdBodyscscscsc: " + cmdBody);
                     // 7wh 주간 예약
