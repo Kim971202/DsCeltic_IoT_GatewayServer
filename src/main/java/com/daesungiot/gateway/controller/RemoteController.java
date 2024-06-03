@@ -141,6 +141,7 @@ public class RemoteController {
                     String weekList = common.readCon(msgBody, "weekList");
                     System.out.println("weekList: " + weekList);
                     JSONObject jsonObject = new JSONObject(weekList);
+                    System.out.println("jsonObject: " + jsonObject);
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + jsonObject + "}}";
 //                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\":" + weekList + "}";
                     // 7wh 주간 예약
