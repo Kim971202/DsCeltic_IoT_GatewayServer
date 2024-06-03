@@ -139,7 +139,8 @@ public class RemoteController {
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
                     System.out.println("weekList: " + weekList);
-                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
+                    System.out.println("JSON.toJson(weekList): " + JSON.toJson(weekList));
+                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + JSON.toJson(weekList) + "}}";
 //                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\":" + weekList + "}";
                     System.out.println("cmdBody: " + cmdBody);
                     cmdBody.replaceAll("\"", "");
