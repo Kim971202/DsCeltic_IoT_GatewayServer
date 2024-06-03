@@ -5,6 +5,7 @@ import com.daesungiot.gateway.service.MccResponse;
 import com.daesungiot.gateway.daesung.RemoteHandler;
 import com.daesungiot.gateway.daesung.RemoteMessage;
 import com.daesungiot.gateway.util.Common;
+import com.daesungiot.gateway.util.JSON;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,7 +99,7 @@ public class RemoteController {
                 return;
             }
 
-            LOGGER.debug("Mobius 로 부터 제어 요청 받음 : " + msgBody);
+            LOGGER.info("Mobius 로 부터 제어 요청 받음 : " + msgBody);
 
 
             String cmdBody = null;
@@ -138,8 +139,8 @@ public class RemoteController {
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
                     System.out.println("weekList: " + weekList);
-//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
-                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\":" + weekList + "}";
+                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
+//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\":" + weekList + "}";
                     System.out.println("cmdBody: " + cmdBody);
                     cmdBody.replaceAll("\"", "");
                     System.out.println("cmdBody: " + cmdBody);
