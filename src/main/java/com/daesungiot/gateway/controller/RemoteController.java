@@ -146,8 +146,8 @@ public class RemoteController {
 //                    sb.append("\"rsCf\": {\"7wk\":");
 //                    sb.append(weekList);
 //                    sb.append("}}");
-                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("{\"rsCf\": \"%s\"}", weekList) + "}}";
-
+//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("{\"rsCf\":  \"%s\"}", weekList) + "}}";
+                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("\"rsCf\": {\"7wk\":\"%s\"}}",weekList);
 //                    cmdBody = String.valueOf(sb);
                     System.out.println("cmdBody: " + cmdBody);
                     // 7wh 주간 예약
