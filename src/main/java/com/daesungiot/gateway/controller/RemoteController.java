@@ -139,15 +139,16 @@ public class RemoteController {
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"12h\": {\"hr\":\"" + workPeriod + "\"," + "\"mn\":\"" + workTime + "\"}}}";
                 } else if (cmdCode == (short) 0x218) {
                     String weekList = common.readCon(msgBody, "weekList");
-                    cmdBody = "";
-                    cmdBody += "{\"ri\":\"";
-                    cmdBody += resourceId;
-                    cmdBody += "\",";
-                    cmdBody += "\"rsCf\": {\"7wk\":";
-                    cmdBody += weekList;
-                    cmdBody += "}}";
-//                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"7wk\":" + weekList + "}}";
+//                    StringBuilder sb = new StringBuilder("");
+//                    sb.append("\"{\\\"ri\\\":\\\"\"");
+//                    sb.append(resourceId);
+//                    sb.append("\",");
+//                    sb.append("\"rsCf\": {\"7wk\":");
+//                    sb.append(weekList);
+//                    sb.append("}}");
+                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + String.format("{\"rsCf\": \"%s\"}", weekList) + "}}";
 
+//                    cmdBody = String.valueOf(sb);
                     System.out.println("cmdBody: " + cmdBody);
                     // 7wh 주간 예약
                 } else if (cmdCode == (short) 0x220) {
