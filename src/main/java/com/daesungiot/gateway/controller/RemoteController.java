@@ -132,7 +132,10 @@ public class RemoteController {
                 } else if (cmdCode == (short) 0x214) {
                     String type24h = common.readCon(msgBody, "type24h");
                     String hours = common.readCon(msgBody, "hours");
-                    cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"24h\": {\"md\":\"" + type24h + "\"," + "\"hs\":" + hours + "}}}";
+                    //cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"24h\": {\"md\":\"" + type24h + "\"," + "\"hs\":" + hours + "}}}";
+
+                     cmdBody = "{\"ri\":\"" + resourceId + "\",\"rsCf\": {\"24h\": {\"md\":\"" + type24h + "\",\"hs\":" + hours + "}}}";
+
                 } else if (cmdCode == (short) 0x216) {
                     String workPeriod = common.readCon(msgBody, "workPeriod");
                     String workTime = common.readCon(msgBody, "workTime");
