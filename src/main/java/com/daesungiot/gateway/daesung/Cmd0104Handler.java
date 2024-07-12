@@ -7,6 +7,7 @@ import com.daesungiot.gateway.service.InteractionRequest;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import java.util.TimeZone;
 @Getter
 @Setter
 @Component(value = "cmd0104")
+@Slf4j
 public class Cmd0104Handler implements ResponseHandler {
 
     @Autowired
@@ -37,27 +39,6 @@ public class Cmd0104Handler implements ResponseHandler {
             JSONObject jsonObject = new Gson().fromJson (new StringReader(new String(req.getBody())), JSONObject.class);
             String utcT = (String) jsonObject.get("utcT");
             System.out.println("utcT: " + utcT);
-
-//            TimeZone tz = TimeZone.getDefault();
-
-
-//            try {
-//                int sign = 1;
-//                if (utcT.charAt(0) == '-') {
-//                    sign = -1;
-//                } else if (utcT.charAt(0) == '+') {
-//                    sign = 1;
-//                } else {
-//                    throw new Exception("invalid format");
-//                }
-//
-//                int offsetMillis = (sign * Integer.parseInt(utcT.substring(1, 3))*60*60*1000) + (sign * Integer.parseInt(utcT.substring(4))*60*1000);
-//                System.out.println("offsetMillis: " + offsetMillis);
-//                tz.setRawOffset(offsetMillis);
-//                System.out.println("tz.getRawOffset(): " + tz.getRawOffset());
-//            } catch (Exception e) {
-//                System.out.println(e);
-//            }
 
             // 한국 시간대 설정
             TimeZone tz = TimeZone.getTimeZone("Asia/Seoul");
@@ -79,13 +60,10 @@ public class Cmd0104Handler implements ResponseHandler {
             System.out.println("dateString: " + dateString);
 
         } catch (Exception e1) {
-            System.out.println(e1);
+            log.error("", e1);
             return RemoteHandler.makeResponse(req, "{\"rtCd\":\"400\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
         }
-        System.out.println("dKey: " + dKey);
-//        if(dKey == null) {
-//            return RemoteHandler.makeResponse(req, "{\"rtCd\":\"401\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
-//        }
+
         return RemoteHandler.makeResponse(req, "{\"rtCd\":\"200\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
     }
 }
