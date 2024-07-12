@@ -60,7 +60,6 @@ public class Cmd0104Handler implements ResponseHandler {
             wk = String.valueOf(cal.get(Calendar.DAY_OF_WEEK)-1);
             dateString = sdf.format(cal.getTime());
 
-            System.out.println("cal: " + cal);
             System.out.println("wk: " + wk);
             System.out.println("dateString: " + dateString);
 

@@ -15,6 +15,7 @@ public class RemoteMessageEncoder extends BinaryMessageEncoder {
     protected void writeHeader(ChannelHandlerContext ctx, BinaryMessage bmsg, ByteBuf out) {
         System.out.println("RemoteMessageEncoder -> writeHeader CALLED");
         RemoteMessage msg = (RemoteMessage)bmsg;
+        System.out.println("RemoteMessage msg: " + msg);
 
         out.writeByte(msg.getProtocolVersion());
         out.writeShort(msg.getLength());
@@ -40,6 +41,7 @@ public class RemoteMessageEncoder extends BinaryMessageEncoder {
         System.out.println("RemoteMessageEncoder -> writeBody CALLED");
 
         RemoteMessage msg = (RemoteMessage)bmsg;
+        System.out.println("RemoteMessage msg: " + msg);
         out.writeBytes(msg.getBody());
     }
 }
