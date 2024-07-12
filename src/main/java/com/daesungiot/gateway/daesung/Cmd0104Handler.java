@@ -68,10 +68,9 @@ public class Cmd0104Handler implements ResponseHandler {
             return RemoteHandler.makeResponse(req, "{\"rtCd\":\"400\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
         }
         System.out.println("dKey: " + dKey);
-        if(dKey == null) {
-            return RemoteHandler.makeResponse(req, "{\"rtCd\":\"401\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
-        }
-
+//        if(dKey == null) {
+//            return RemoteHandler.makeResponse(req, "{\"rtCd\":\"401\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
+//        }
         return RemoteHandler.makeResponse(req, "{\"rtCd\":\"200\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
     }
 }
