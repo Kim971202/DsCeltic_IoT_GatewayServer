@@ -29,7 +29,7 @@ public class Cmd0104Handler implements ResponseHandler {
     public BinaryMessage handle(ChannelHandlerContext ctx, String cseid, String dKey, BinaryMessage msg) {
         System.out.println("Cmd0104Handler -> handle CALLED");
         RemoteMessage req = (RemoteMessage) msg;
-
+        System.out.println("11111111111111111111111111111111111111111111111111111");
         Calendar cal = Calendar.getInstance();
         String wk = String.valueOf(cal.get(Calendar.DAY_OF_WEEK)-1);
         String dateString = sdf.format(cal.getTime());
@@ -37,6 +37,7 @@ public class Cmd0104Handler implements ResponseHandler {
         try {
             JSONObject jsonObject = new Gson().fromJson (new StringReader(new String(req.getBody())), JSONObject.class);
             String utcT = (String) jsonObject.get("utcT");
+            System.out.println("utcT: " + utcT);
             TimeZone tz = TimeZone.getDefault();
 
             try {
@@ -49,18 +50,25 @@ public class Cmd0104Handler implements ResponseHandler {
                     new Exception("invaild format");
 
                 int offsetMillis = (sign * Integer.parseInt(utcT.substring(1, 3))*60*60*1000) + (sign * Integer.parseInt(utcT.substring(4))*60*1000);
+                System.out.println("offsetMillis: " + offsetMillis);
                 tz.setRawOffset(offsetMillis);
+                System.out.println("tz.getRawOffset(): " + tz.getRawOffset());
             } catch (Exception e) {
                 System.out.println(e);
             }
             cal = Calendar.getInstance(tz);
             wk = String.valueOf(cal.get(Calendar.DAY_OF_WEEK)-1);
             dateString = sdf.format(cal.getTime());
+
+            System.out.println("cal: " + cal);
+            System.out.println("wk: " + wk);
+            System.out.println("dateString: " + dateString);
+
         } catch (Exception e1) {
             System.out.println(e1);
             return RemoteHandler.makeResponse(req, "{\"rtCd\":\"400\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
         }
-
+        System.out.println("dKey: " + dKey);
         if(dKey == null) {
             return RemoteHandler.makeResponse(req, "{\"rtCd\":\"401\",\"syDt\":\""+dateString+"\",\"wk\":\""+wk+"\"}");
         }
