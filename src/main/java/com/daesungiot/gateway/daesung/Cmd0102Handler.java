@@ -93,6 +93,7 @@ public class Cmd0102Handler implements ResponseHandler {
 
         } catch (Exception e) {
             System.out.println(e);
+            System.out.println("{\"rtCd\":\"400\",\"rpTm\":\"00:" + min + "\"}" + "1");
             return RemoteHandler.makeResponse(req, "{\"rtCd\":\"400\",\"rpTm\":\"00:" + min + "\"}");
         }
 
@@ -125,6 +126,7 @@ public class Cmd0102Handler implements ResponseHandler {
 
                         System.out.println("## 401401401401401401401 error  || new Dkey : " + dKey);
                     }
+                    System.out.println("{\"rtCd\":\"401\",\"rpTm\":\"00:" + min + "\"}" + "2");
                     return RemoteHandler.makeResponse(req, "{\"rtCd\":\"401\",\"rpTm\":\"00:" + min + "\"}");
                 }
 
@@ -132,12 +134,17 @@ public class Cmd0102Handler implements ResponseHandler {
                 String aeName = cseid.substring(endIdx + 1);
 
                 MccResponse resp1 = mccRequest.createContainer(srNo, containers, aeName);
-                if (resp1.getResponseCode() > 299 && resp1.getResponseCode() != 403)
+                if (resp1.getResponseCode() > 299 && resp1.getResponseCode() != 403){
+                    System.out.println("{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}" + "3");
                     return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}");
+                }
+
 
                 MccResponse resp2 = mccRequest.createSubscription(aeName, srNo, rKey);
-                if (resp2.getResponseCode() > 299 && resp2.getResponseCode() != 403)
+                if (resp2.getResponseCode() > 299 && resp2.getResponseCode() != 403){
+                    System.out.println("{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}" + "4");
                     return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}");
+                }
 
                 if (dKey != null)
                     rcHandler.putDKey(cseid, dKey);
@@ -171,18 +178,23 @@ public class Cmd0102Handler implements ResponseHandler {
                     }
                     if (boilerRcYN) {
                         //기존 보일러 버전인 경우와 아닌 경우 구분 해서 반환
+                        System.out.println("{\"rtCd\":\"200\",\"rpTm\":\"00:" + min + "\"}" + "5");
                         return RemoteHandler.makeResponse(req, "{\"rtCd\":\"200\",\"rpTm\":\"00:" + min + "\"}");
                     } else {
+                        System.out.println("{\"rtCd\":\"200\",\"rpTm\":\"00:" + min + "\",\"dvId\":\"" + cseid + "\"}" + "6");
                         return RemoteHandler.makeResponse(req, "{\"rtCd\":\"200\",\"rpTm\":\"00:" + min + "\",\"dvId\":\"" + cseid + "\"}");
                     }
                 } else {
+                    System.out.println("{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}" + "7");
                     return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}");
                 }
             } else {
+                System.out.println("{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}" + "8");
                 return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}");
             }
         } catch (Exception e) {
             System.out.println(e);
+            System.out.println("{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}" + "9");
             return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}");
         }
     }
