@@ -195,7 +195,7 @@ public class Cmd0102Handler implements ResponseHandler {
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("{\"rtCd\":\"500\",\"rpTm\":\"00:" + min + "\"}" + "9");
-            return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"13:" + "30" + "\"}");
+            return RemoteHandler.makeResponse(req, "{\"rtCd\":\"500\",\"rpTm\":\"14:" + "29" + "\"}");
         }
     }
 }
