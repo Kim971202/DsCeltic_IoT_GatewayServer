@@ -4,9 +4,11 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Slf4j
 public abstract class BinaryHandler extends ChannelInboundHandlerAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BinaryHandler.class);
@@ -17,6 +19,7 @@ public abstract class BinaryHandler extends ChannelInboundHandlerAdapter {
         BinaryMessage hMsg = null;
 
         LOGGER.debug("#Binary Handler R/C Data recieved:"+msg);
+        log.info("#Binary Handler R/C Data recieved: "+msg);
 
         if (msg instanceof BinaryMessage) {
             hMsg = (BinaryMessage) msg;
