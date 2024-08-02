@@ -133,16 +133,11 @@ public class RemoteController {
                     String type24h = common.readCon(msgBody, "type24h");
                     String hours = common.readCon(msgBody, "hours");
                     System.out.println("hours: " + hours);
-//                    String changedHours = hours
-//                            .replace("[", "[\"")
-//                            .replace("]", "\"]")
-//                            .replace(",", "\",\"");
-//
-//                    System.out.println("changedHours: " + changedHours);
+
 
                     cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"24h\": {\"md\":\"" + type24h + "\"," + "\"hs\":" + hours + "}}}";
 
-//                     cmdBody = "{\"ri\":\"" + resourceId + ",\"rsCf\": {\"24h\": {\"md\":" + type24h + ",\"hs\":" + changedHours + "}}}";
+                     cmdBody = "{\"ri\":\"" + resourceId + ",\"rsCf\": {\"24h\":" + hours + " }";
 
                 } else if (cmdCode == (short) 0x216) {
                     String workPeriod = common.readCon(msgBody, "workPeriod");
