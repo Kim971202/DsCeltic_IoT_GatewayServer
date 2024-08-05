@@ -134,6 +134,7 @@ public class RemoteController {
                     String hours = common.readCon(msgBody, "hours");
                     System.out.println("hours: " + hours);
                     System.out.println("hours: " + hours.replace("\\", ""));
+                    System.out.println("hours: " + hours.replace(" ", ""));
 
                     //cmdBody = "{\"ri\":\"" + resourceId + "\"," + "\"rsCf\": {\"24h\": {\"md\":\"" + type24h + "\"," + "\"hs\":" + hours + "}}}";
 
