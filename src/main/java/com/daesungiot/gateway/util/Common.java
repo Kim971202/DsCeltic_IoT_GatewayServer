@@ -246,8 +246,8 @@ public class Common {
             String str = srNo.substring(i, i + 2);
             stringBuilder.append((char) Integer.parseInt(str, 16));
         }
-        System.out.println("stringBuilder.toString(): " + stringBuilder.toString());
-        return stringBuilder.toString();
+        System.out.println("stringBuilder.toString(): " + stringBuilder.toString().replaceAll(" ", ""));
+        return stringBuilder.toString().replaceAll(" ", "");
     }
 
 
