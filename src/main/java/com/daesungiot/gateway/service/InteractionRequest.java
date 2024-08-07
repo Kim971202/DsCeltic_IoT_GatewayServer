@@ -488,6 +488,14 @@ public class InteractionRequest {
     public MccResponse ContentInstanceResultPut(String cseid, String dKey, String mgmtCmd, String uuId, String resourceId, String rKey, String srNo, int errorCode) throws Exception {
 
         System.out.println("ContentInstanceResultPut(String cseid, String dKey, String mgmtCmd, String uuId, String resourceId, String rKey, String srNo, int errorCode) CALLED");
+        System.out.println("cseid: " + cseid);
+        System.out.println("dKey: " + dKey);
+        System.out.println("mgmtCmd: " + mgmtCmd);
+        System.out.println("uuId: " + uuId);
+        System.out.println("resourceId: " + resourceId);
+        System.out.println("rKey: " + rKey);
+        System.out.println("srNo: " + srNo);
+        System.out.println("errorCode: " + errorCode);
 
         M2mCin cinObject = new M2mCin();
         M2mCin.Cin cin = new M2mCin.Cin();
@@ -512,16 +520,26 @@ public class InteractionRequest {
             }
         };
 
+        System.out.println("value: " + value);
+
         String newBody = common.createCon(key, value);
+        System.out.println(newBody);
+
         String serialNo = common.hexaToText2(srNo);
+        System.out.println("serialNo: " + serialNo);
+
         cin.setCon(newBody);
         cinObject.setDefaultValue(cin);
 
         String requestBody = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(cinObject);
+        System.out.println("requestBody: " + requestBody);
+
         StringEntity entity = new StringEntity(requestBody);
+        System.out.println("entity: " + entity);
 
         int endIdx = cseid.lastIndexOf('.');
         String aeName = cseid.substring(endIdx + 1);
+        System.out.println("aeName: " + aeName);
 
         URI uri = new URIBuilder()
                 .setScheme("http")
