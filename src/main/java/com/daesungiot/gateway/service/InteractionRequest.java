@@ -124,6 +124,8 @@ public class InteractionRequest {
     public MccResponse createAE(String cseid, String srNo, String modelCode, String rKey, String tKey) throws UnsupportedEncodingException, ClientProtocolException,
             URISyntaxException, IOException {
 
+        System.out.println("createAE CALLED");
+
         M2mAe aeObject = new M2mAe();
         M2mAe.Ae ae = new M2mAe.Ae();
 
@@ -180,6 +182,8 @@ public class InteractionRequest {
     public MccResponse eachRcCreateAE(String cseid, String srNo, String modelCode, String rKey, String tKey, String prId) throws UnsupportedEncodingException, ClientProtocolException,
             URISyntaxException, IOException {
 
+        System.out.println("eachRcCreateAE CALLED");
+
         M2mAe aeObject = new M2mAe();
         M2mAe.Ae ae = new M2mAe.Ae();
 
@@ -235,6 +239,9 @@ public class InteractionRequest {
 
 
     public MccResponse createContainer(String srNo, String[] labels, String aeName) throws URISyntaxException, IOException {
+
+        System.out.println("createContainer CALLED");
+
         M2mCnt cntObject = new M2mCnt();
         M2mCnt.Cnt cnt = new M2mCnt.Cnt();
 
@@ -280,6 +287,9 @@ public class InteractionRequest {
 
 
     public MccResponse createSubscription(String aeName, String srNo, String rKey) throws URISyntaxException, IOException {
+
+        System.out.println("createSubscription CALLED");
+
         M2mSub subObject = new M2mSub();
         M2mSub.Sub sub = new M2mSub.Sub();
         M2mSub.Sub.Enc enc = new M2mSub.Sub.Enc();
@@ -329,6 +339,9 @@ public class InteractionRequest {
     }
 
     public MccResponse createContentInstance(String aeName, String srNo, String jsonBody, String cseid) throws Exception {
+
+        System.out.println("createContentInstance(String aeName, String srNo, String jsonBody, String cseid) CALLED");
+
         M2mCin cinObject = new M2mCin();
         M2mCin.Cin cin = new M2mCin.Cin();
 
@@ -390,6 +403,9 @@ public class InteractionRequest {
     }
 
     public MccResponse createContentInstance(String aeName, String srNo, String jsonBody, String cmdCode, String cseid) throws Exception {
+
+        System.out.println("createContentInstance(String aeName, String srNo, String jsonBody, String cmdCode, String cseid) CALLED");
+
         M2mCin cinObject = new M2mCin();
         M2mCin.Cin cin = new M2mCin.Cin();
 
@@ -470,6 +486,9 @@ public class InteractionRequest {
 
 
     public MccResponse ContentInstanceResultPut(String cseid, String dKey, String mgmtCmd, String uuId, String resourceId, String rKey, String srNo, int errorCode) throws Exception {
+
+        System.out.println("ContentInstanceResultPut(String cseid, String dKey, String mgmtCmd, String uuId, String resourceId, String rKey, String srNo, int errorCode) CALLED");
+
         M2mCin cinObject = new M2mCin();
         M2mCin.Cin cin = new M2mCin.Cin();
 
@@ -537,6 +556,9 @@ public class InteractionRequest {
     }
 
     public MccResponse ContentInstanceResultPut(String cseid, String dKey, String mgmtCmd, String resourceId, int errorCode) throws Exception {
+
+        System.out.println("ContentInstanceResultPut(String cseid, String dKey, String mgmtCmd, String resourceId, int errorCode) CALLED");
+
         M2mCin cinObject = new M2mCin();
         M2mCin.Cin cin = new M2mCin.Cin();
 
