@@ -229,24 +229,19 @@ public class Common {
     public String hexaToText2 (String srNo) throws Exception {
 
 //            String HexString = deviceId.substring(33, 57);
-//        System.out.println("hexaToText2:");
-//        String HexString = srNo.substring(8);
-//
-//        String OutputString = new String();
-//        char[] Temp_Char = HexString.toCharArray();
-//        for (int x = 0; x < Temp_Char.length; x = x + 2) {
-//            String Temp_String = "" + Temp_Char[x] + "" + Temp_Char[x + 1];
-//            char character = (char) Integer.parseInt(Temp_String, 16);
-//            OutputString = OutputString + character;
-//        }
-//
-//        return OutputString;
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < srNo.length(); i += 2) {
-            String str = srNo.substring(i, i + 2);
-            stringBuilder.append((char) Integer.parseInt(str, 16));
+        System.out.println("hexaToText2: " + srNo);
+        String HexString = srNo.substring(8);
+
+        String OutputString = new String();
+        char[] Temp_Char = HexString.toCharArray();
+        for (int x = 0; x < Temp_Char.length; x = x + 2) {
+            String Temp_String = "" + Temp_Char[x] + "" + Temp_Char[x + 1];
+            char character = (char) Integer.parseInt(Temp_String, 16);
+            OutputString = OutputString + character;
         }
-        return stringBuilder.toString();
+
+        return OutputString;
+
     }
 
 
